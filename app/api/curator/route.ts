@@ -9,7 +9,7 @@ export async function POST(req: Request): Promise<Response> {
   } catch {
     return Response.json({ error: "invalid JSON body" }, { status: 400 });
   }
-  const messages = (body as { messages?: unknown }).messages;
+  const messages = (body as { messages?: unknown } | null)?.messages;
   if (!Array.isArray(messages)) {
     return Response.json({ error: "`messages` must be an array" }, { status: 400 });
   }
