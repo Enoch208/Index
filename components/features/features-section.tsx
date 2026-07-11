@@ -1,55 +1,51 @@
 import { FeatureCard } from "@/components/features/feature-card";
-import { IdleYieldMap } from "@/components/features/idle-yield-map";
-import { YieldRouting } from "@/components/confidence/yield-routing";
-import { RunwayMeter } from "@/components/features/runway-meter";
-import { StreamControl } from "@/components/features/stream-control";
+import { MarketScanMap } from "@/components/features/market-scan-map";
+import { SourceRouting } from "@/components/features/source-routing";
+import { EvMeter } from "@/components/features/ev-meter";
+import { FairnessCheck } from "@/components/features/fairness-check";
+import { PolicyGuard } from "@/components/features/policy-guard";
 import { Reveal } from "@/components/motion/reveal";
 import { Section } from "@/components/layout/section";
 import { SectionHeading } from "@/components/layout/section-heading";
 
 const rowOne = [
   {
-    id: "global-payments",
-    tag: "Streaming",
-    lead: "Pay by the second",
-    rest: "Your team accrues salary continuously onchain — no payday.",
-    image: "/assets/1.png",
-    imageAlt: "Salaries streaming to a team onchain",
+    id: "valuation",
+    tag: "Valuation",
+    lead: "Value any vault",
+    rest: "Paste a public wallet — every card priced with a confidence range and a cited source.",
+    imageAlt: "A vault valued from verified Renaiss and on-chain data",
   },
   {
-    id: "instant-transfers",
-    tag: "Yield",
-    lead: "Idle cash never sleeps",
-    rest: "Unclaimed payroll auto-invests on Sui and keeps earning.",
-    image: "/assets/2.png",
-    imageAlt: "Idle payroll funds earning yield across Sui protocols",
+    id: "scanner",
+    tag: "Scanner",
+    lead: "Catch mispriced cards",
+    rest: "Ranked listings where the ask drifts below fair-market value, with the deviation math.",
+    imageAlt: "Mispriced listings surfaced across the Renaiss marketplace",
   },
 ];
 
 const rowTwo = [
   {
-    id: "rewards",
-    tag: "Visibility",
-    lead: "Know your runway",
-    rest: "See how long your treasury funds payroll, live.",
-    image: "/assets/3.png",
-    imageAlt: "Live payroll runway visibility",
+    id: "ev",
+    tag: "EV",
+    lead: "Rip-or-buy, with the math",
+    rest: "Buying direct vs. expected gacha cost — depletion-adjusted, never a bare verdict.",
+    imageAlt: "Rip-or-buy expected-value math for a pack",
   },
   {
-    id: "analytics",
-    tag: "Control",
-    lead: "Total stream control",
-    rest: "Pause, resume, or stop any stream instantly.",
-    image: "/assets/4.png",
-    imageAlt: "Pause, resume, and stop individual salary streams",
+    id: "fairness",
+    tag: "Fairness",
+    lead: "Verify pool fairness",
+    rest: "Recompute a pack's Merkle root and match it against the on-chain root.",
+    imageAlt: "On-chain Merkle root matching a recomputed pool root",
   },
   {
-    id: "security",
-    tag: "Security",
-    lead: "Your keys, your payroll",
-    rest: "Wallet-signed and non-custodial, settled on Sui.",
-    image: "/assets/5.png",
-    imageAlt: "Non-custodial payroll secured by wallet signatures",
+    id: "safety",
+    tag: "Safety",
+    lead: "Safe by architecture",
+    rest: "Read-only by default, human-in-the-loop, and every claim carries its source.",
+    imageAlt: "Read-only, paper-trading, human-approval policy engine",
   },
 ];
 
@@ -68,8 +64,8 @@ export function FeaturesSection() {
         align="center"
         eyebrow="Core Features"
         eyebrowIcon={<BoltIcon />}
-        title="Onchain payroll, zero overhead"
-        description="Everything you need to run payroll that streams, earns, and stays under your control — all settled on Sui."
+        title="Grounded, safe, and yours"
+        description="Everything the Curator does is built only from verified data — with safety wired into the architecture, not bolted on."
       />
 
       <div className="grid gap-6 lg:grid-cols-2">
@@ -81,10 +77,10 @@ export function FeaturesSection() {
               align="left"
               large
               media={
-                card.id === "instant-transfers" ? (
-                  <IdleYieldMap />
-                ) : card.id === "global-payments" ? (
-                  <YieldRouting />
+                card.id === "scanner" ? (
+                  <MarketScanMap />
+                ) : card.id === "valuation" ? (
+                  <SourceRouting />
                 ) : undefined
               }
             />
@@ -100,13 +96,14 @@ export function FeaturesSection() {
               aspect="aspect-[16/15]"
               align="center"
               media={
-                card.id === "rewards" ? (
-                  <RunwayMeter />
-                ) : card.id === "analytics" ? (
-                  <StreamControl />
+                card.id === "ev" ? (
+                  <EvMeter />
+                ) : card.id === "fairness" ? (
+                  <FairnessCheck />
+                ) : card.id === "safety" ? (
+                  <PolicyGuard />
                 ) : undefined
               }
-              frameClassName={card.id === "security" ? "bg-[#131316]" : undefined}
             />
           </Reveal>
         ))}
