@@ -1,0 +1,12 @@
+{
+  "pack_slug": "eden-pack",
+  "pack_price": 150,
+  "model": "limited",
+  "total_remaining": 1840,
+  "tiers": [
+    { "label": "Grail",  "odds": 0.01, "card_count": 20,   "cards_remaining": 18,   "fmv_low": 4000, "fmv_high": 12000 },
+    { "label": "Chase",  "odds": 0.09, "card_count": 180,  "cards_remaining": 165,  "fmv_low": 400,  "fmv_high": 1200 },
+    { "label": "Rare",   "odds": 0.30, "card_count": 600,  "cards_remaining": 560,  "fmv_low": 90,   "fmv_high": 300 },
+    { "label": "Common", "odds": 0.60, "card_count": 1200, "cards_remaining": 1097, "fmv_low": 20,   "fmv_high": 80 }
+  ]
+}

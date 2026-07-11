@@ -1,0 +1,8 @@
+[
+  { "card_id": "eevee-heroes-psa10-001", "name": "Eevee Heroes", "set": "Eevee Heroes", "grade": "10", "grader": "PSA",
+    "fmv": 210, "cmv": 205, "ask": 175, "last_sale": 200, "top_offer": 160, "custody_status": "vaulted",
+    "url": "https://www.renaiss.xyz/card/eevee-heroes-psa10-001" },
+  { "card_id": "charizard-base-psa9-014", "name": "Charizard", "set": "Base Set", "grade": "9", "grader": "PSA",
+    "fmv": 1600, "cmv": 1720, "ask": 1900, "last_sale": 1650, "custody_status": "vaulted",
+    "url": "https://www.renaiss.xyz/card/charizard-base-psa9-014" }
+]
