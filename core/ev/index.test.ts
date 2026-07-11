@@ -1,5 +1,5 @@
 import { test, expect } from "vitest";
-import { packEv, effectiveProbs } from "./index";
+import { packEv, effectiveProbs, ripOrBuy } from "./index";
 import type { PoolOdds } from "../types";
 
 const infinitePool: PoolOdds = {
@@ -53,4 +53,18 @@ test("variance combines between-tier spread and the within-tier uniform term", (
   const r = packEv(pool);
   expect(r.ev_per_rip).toBeCloseTo(3, 6);
   expect(r.std_dev).toBeCloseTo(Math.sqrt(15), 6);
+});
+
+test("ripOrBuy: net gacha cost = (P-EV)/p + F_t and verdict respects the margin", () => {
+  // P=150, EV=120, p=0.05, F_t=1000, ask=1500 -> (150-120)/0.05 + 1000 = 1600
+  const r = ripOrBuy({ target_fmv: 1000, hit_prob: 0.05, pack_price: 150, ev_per_rip: 120, direct_ask: 1500 });
+  expect(r.expected_rips).toBeCloseTo(20, 6);
+  expect(r.gacha_net_expected_cost).toBeCloseTo(1600, 6);
+  expect(r.verdict).toBe("buy"); // 1600 > 1500*1.05
+});
+
+test("ripOrBuy: cheaper-than-ask net cost yields a rip verdict", () => {
+  // (150-120)/0.05 + 1000 = 1600; ask=2000 -> 1600 < 2000*0.95 -> rip
+  const r = ripOrBuy({ target_fmv: 1000, hit_prob: 0.05, pack_price: 150, ev_per_rip: 120, direct_ask: 2000 });
+  expect(r.verdict).toBe("rip");
 });

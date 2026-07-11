@@ -40,3 +40,29 @@ export function packEv(pool: PoolOdds, rips = 1): EvComputation {
     })),
   };
 }
+
+export interface RipOrBuyInput {
+  target_fmv: number;   // F_t
+  hit_prob: number;     // p_t
+  pack_price: number;   // P
+  ev_per_rip: number;   // EV
+  direct_ask: number;   // A_t
+  margin?: number;      // m, default 0.05
+}
+
+export function ripOrBuy(inp: RipOrBuyInput): {
+  expected_rips: number;
+  gacha_net_expected_cost: number;
+  verdict: "buy" | "rip" | "toss-up";
+} {
+  const m = inp.margin ?? 0.05;
+  const expected_rips = 1 / inp.hit_prob;
+  // Reselling every non-target pull at FMV, net expected cost to acquire the target:
+  //   C = (P - EV)/p_t + F_t   where (P-EV) is per-rip house edge and 1/p_t is expected rips.
+  const gacha = (inp.pack_price - inp.ev_per_rip) / inp.hit_prob + inp.target_fmv;
+  let verdict: "buy" | "rip" | "toss-up";
+  if (gacha < inp.direct_ask * (1 - m)) verdict = "rip";
+  else if (gacha > inp.direct_ask * (1 + m)) verdict = "buy";
+  else verdict = "toss-up";
+  return { expected_rips, gacha_net_expected_cost: gacha, verdict };
+}
