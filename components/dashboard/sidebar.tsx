@@ -14,6 +14,7 @@ type NavItem = {
 
 const navItems: readonly NavItem[] = [
   { icon: "home", label: "Overview", href: "/dashboard" },
+  { icon: "sparkle", label: "Curator", href: "/dashboard/curator" },
   { icon: "dollar", label: "Portfolio", href: "/dashboard/portfolio" },
   { icon: "search", label: "Scanner", href: "/dashboard/scanner" },
   { icon: "gift", label: "Rip-or-buy", href: "/dashboard/rip-or-buy" },
