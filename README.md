@@ -30,6 +30,8 @@ _Video not playing? (GitHub only streams it to signed‑in users.) Watch it on Y
 
 https://youtu.be/uD57yAcbpVM
 
+🧵 **[Read the thread on X ↗](https://x.com/dreyethh/status/2075964212531065308)**
+
 ---
 
 ## ▶ See it in one call
