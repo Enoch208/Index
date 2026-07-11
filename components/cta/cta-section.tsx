@@ -45,18 +45,18 @@ export function CtaSection() {
           <div className="relative z-10">
             <p className="inline-flex items-center gap-2 text-[12px] font-medium text-[#0b1e05]/70">
               <span className="size-1.5 rounded-full bg-[#0b1e05]/70" />
-              Start Streaming Today
+              Put an agent on your collection
             </p>
             <h2 className="mx-auto mt-3 text-[clamp(28px,4vw,42px)] font-medium leading-[1.1] tracking-[-0.02em]">
-              Stream Your Payroll
+              Research, value &amp; verify
               <br />
-              with Confidence
+              with confidence
             </h2>
             <p className="mx-auto mt-4 max-w-none text-[13px] leading-6 text-[#0b1e05]/75 sm:whitespace-nowrap">
-              Fund a pool, stream salaries by the second, and earn on every idle dollar.
+              Value any vault, catch mispriced cards, and verify pool fairness — with the math shown.
             </p>
             <LaunchAppButton className="mt-7 inline-flex h-10 items-center gap-2 rounded-full bg-[#0a0e16] px-7 text-[13px] font-medium text-white transition-opacity hover:opacity-90">
-              Launch Dashboard
+              Launch the Curator
               <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden>
                 <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
