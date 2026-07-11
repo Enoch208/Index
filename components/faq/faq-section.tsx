@@ -11,32 +11,32 @@ import {
 
 const faqs = [
   {
-    q: "How does salary streaming work?",
-    a: "You fund a token pool once and set each employee's rate. Their salary then accrues every millisecond onchain, and they can claim the earned amount whenever they want.",
+    q: "How does portfolio valuation work?",
+    a: "Paste a public wallet and the Curator pulls your vaulted holdings, values each card against Renaiss fair-market value with a confidence range, and cites the source and timestamp on every number.",
   },
   {
-    q: "What happens to unclaimed payroll?",
-    a: "Idle funds are automatically invested into Sui lending protocols like Navi and Scallop, earning yield until an employee claims their salary.",
+    q: "Is this financial advice?",
+    a: "No. Index shows probability and pricing math with stated assumptions — every answer carries the line “FMV is an estimate; not financial advice.” It never predicts prices.",
   },
   {
-    q: "Which blockchain does Sweem use?",
-    a: "Sweem runs entirely on Sui. Pools, streams, and vaults are Move objects, so balances and payouts settle trustlessly onchain.",
+    q: "Where does the data come from?",
+    a: "Public, clearly-labeled sources only: renaiss.xyz listings and pack-odds panels, and BNB Chain (BscScan) for Merkle roots and provenance. Any external comps are labeled as estimates.",
   },
   {
-    q: "Can employees claim their salary anytime?",
-    a: "Yes — earned salary is claimable 24/7, there's no payday. Employees withdraw to their wallet or route it into a yield vault.",
+    q: "Do you hold my keys or funds?",
+    a: "Never. Index is read-only and works from public wallet addresses only — no private keys, no custody, and no auth flows.",
   },
   {
-    q: "How do I pause or stop a stream?",
-    a: "From the dashboard you can pause, resume, or stop any individual stream. Paused time is excluded from accrual; stopping returns the remaining funds to your pool.",
+    q: "How does the fairness check work?",
+    a: "It fetches a pack's on-chain Merkle root and recomputes it from the published pool. A match proves the pool was committed before sales began — it does not prove the FMV estimates are accurate, and the result says so.",
   },
   {
-    q: "Which tokens and yield protocols are supported?",
-    a: "Sweem supports multi-token pools and routes idle funds to Sui protocols including Navi and Scallop. New protocols are added through the registry — no contract upgrades needed.",
+    q: "What is the MCP server?",
+    a: "An open Model Context Protocol server that exposes Renaiss data as typed tools, so any agent — Claude Desktop or your own — can query listings, odds, EV, and custody. It installs with a single command.",
   },
   {
-    q: "Is Sweem custodial?",
-    a: "No. Funds live in onchain pools and vaults you control via wallet signatures. Sweem never takes custody of your payroll.",
+    q: "Can the agent buy or trade for me?",
+    a: "No auto-execution. Any action renders as a draft that needs your explicit confirmation, with a spend cap. Paper-trading is the default.",
   },
 ];
 
@@ -58,7 +58,7 @@ export function FaqSection() {
         eyebrow="FAQ"
         eyebrowIcon={<QuestionIcon />}
         title="Frequently Asked Questions"
-        description="Everything you need to know about streaming payroll on Sweem."
+        description="Everything you need to know about how Index values, verifies, and stays safe."
       />
 
       <div className="grid items-start gap-8 lg:grid-cols-[320px_1fr]">
@@ -69,7 +69,7 @@ export function FaqSection() {
               <div className="relative flex h-full w-full items-center justify-center">
                 <div className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(196,245,107,0.22),transparent_70%)] blur-2xl" />
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/faq.png" alt="Frequently asked questions" className="relative h-full w-full rounded-[20px] object-contain" />
+                <img src="/faq_brand_art.png" alt="A graded collectible card slab, verified" className="relative h-full w-full rounded-[20px] object-contain" />
               </div>
             </div>
             <div className="rounded-[16px] border border-border bg-surface p-5">
@@ -82,7 +82,7 @@ export function FaqSection() {
                 size="sm"
                 className="mt-4 gap-1.5 rounded-full bg-brand-dark text-white hover:bg-brand-dark/90"
               >
-                <a href="mailto:support.sweem@gmail.com">
+                <a href="mailto:hello@index.app">
                   Contact Us
                   <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
                     <path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round" />
