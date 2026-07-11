@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Code2, Puzzle, type LucideIcon } from "lucide-react";
+import { Sparkles, Server, ShieldCheck, Search, Boxes, Link2, BadgeCheck, Bot, type LucideIcon } from "lucide-react";
 import { Logo } from "@/components/shared/logo";
 import { LaunchAppButton } from "@/components/shared/launch-app-button";
 import { cn } from "@/lib/utils";
@@ -11,33 +11,29 @@ type Menu = { title: string; desc: string; items: MenuItem[] };
 
 const MENUS: Record<string, Menu> = {
   Product: {
-    title: "The Sweem platform",
-    desc: "Stream payroll by the second and earn yield on idle cash. Run it from the dashboard, embed checkout with the SDK, or pay from your browser.",
+    title: "The index platform",
+    desc: "An open MCP server plus The Curator — a grounded agent that values, verifies, and prices graded collectibles. Use it in the app, in Claude, or your own agent.",
     items: [
-      { name: "Sweem", sub: "Streaming payroll on Sui", logo: "/sweem.png" },
-      {
-        name: "Checkout SDK",
-        sub: "@sweem/sdk · accept USDC & SUI",
-        icon: Code2,
-        href: "https://www.npmjs.com/package/@sweem/sdk",
-      },
-      { name: "Chrome Extension", sub: "Pay from your browser", icon: Puzzle, soon: true },
+      { name: "The Curator", sub: "Grounded collector agent", icon: Sparkles, href: "#home" },
+      { name: "MCP Server", sub: "@index/mcp · 6+ tools", icon: Server, href: "#features" },
+      { name: "Fairness Verifier", sub: "On-chain Merkle checks", icon: ShieldCheck, href: "#features" },
+      { name: "Mispricing Scanner", sub: "FMV-deviation listings", icon: Search, href: "#features" },
     ],
   },
-  Protocol: {
-    title: "Powered by the Sui ecosystem",
-    desc: "Idle payroll auto-invests across leading Sui lending protocols and keeps earning until the moment it is claimed.",
+  Data: {
+    title: "Grounded in verified data",
+    desc: "Every answer is built only from public, clearly-labeled sources — with a source and timestamp on every number.",
     items: [
-      { name: "Navi", sub: "6.4% APY", logo: "/protocols/lending/navi.webp" },
-      { name: "Scallop", sub: "5.8% APY", logo: "/protocols/lending/scallop.png" },
-      { name: "Suilend", sub: "7.1% APY", logo: "https://unavatar.io/suilend.fi" },
-      { name: "Ondo", sub: "5.2% APY", logo: "https://unavatar.io/ondo.finance" },
-      { name: "AlphaFi", sub: "6.0% APY", logo: "https://unavatar.io/alphafi.xyz" },
+      { name: "Renaiss", sub: "Listings, odds & custody", icon: Boxes, href: "#integrations" },
+      { name: "BNB Chain", sub: "On-chain provenance", icon: Link2, href: "#integrations" },
+      { name: "BscScan", sub: "Merkle roots", icon: Search, href: "#integrations" },
+      { name: "PSA · BGS", sub: "Grading references", icon: BadgeCheck, href: "#integrations" },
+      { name: "Claude (MCP)", sub: "Any MCP client", icon: Bot, href: "#integrations" },
     ],
   },
 };
 
-const links = ["Home", "Product", "Protocol", "Docs"];
+const links = ["Home", "Product", "Data", "Docs"];
 
 export function Navbar() {
   const [open, setOpen] = useState<string | null>(null);
@@ -79,7 +75,7 @@ export function Navbar() {
           Docs
         </a>
         <LaunchAppButton className="rounded-full bg-[#c4f56b] px-5 py-2 text-[13px] font-semibold text-[#0a0c10] shadow-sm">
-          Launch App
+          Launch the Curator
         </LaunchAppButton>
       </div>
     </header>
