@@ -5,6 +5,7 @@ import { SnapshotSource } from "../source/snapshot";
 import { registerReadTools } from "./read-tools";
 import { registerAnalysisTools } from "./analysis-tools";
 import { registerVerifyTool, type LeavesReader } from "./verify-tool";
+import { registerPulseTool } from "./pulse-tool";
 import type { RootReader } from "../chain/bscscan";
 
 export interface Tool {
@@ -32,6 +33,7 @@ export function getRegistry(
   const reg: Registry = {};
   registerReadTools(reg, d);
   registerAnalysisTools(reg, d);
+  registerPulseTool(reg, d);
   const rootReader: RootReader = deps?.rootReader ?? { getRoot: async () => null };
   const leavesReader: LeavesReader = deps?.leavesReader ?? { getLeaves: async () => null };
   registerVerifyTool(reg, d, { root: rootReader, leaves: leavesReader });

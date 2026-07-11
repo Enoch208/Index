@@ -60,3 +60,10 @@ test("verify_merkle_proof reports match when readers agree", async () => {
   expect((e.data as any).match).toBe(true);
   expect((e.data as any).not_proven.length).toBeGreaterThan(0);
 });
+
+test("get_market_pulse returns 24h volume and moves", async () => {
+  const e = await reg.get_market_pulse.handler({});
+  const d = e.data as any;
+  expect(d.window_hours).toBe(24);
+  expect(typeof d.volume).toBe("number");
+});
