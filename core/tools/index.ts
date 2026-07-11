@@ -2,6 +2,7 @@ import { z } from "zod";
 import type { Envelope } from "../envelope";
 import { resolveSource, type RenaissSource } from "../source/index";
 import { SnapshotSource } from "../source/snapshot";
+import { liveFromEnv } from "../source/live";
 import { registerReadTools } from "./read-tools";
 import { registerAnalysisTools } from "./analysis-tools";
 import { registerVerifyTool, type LeavesReader } from "./verify-tool";
@@ -28,7 +29,7 @@ export function getRegistry(
   }>,
 ): Registry {
   const snapshot = deps?.snapshot ?? new SnapshotSource();
-  const live = deps?.live ?? null;
+  const live = deps?.live !== undefined ? deps.live : liveFromEnv();
   const d: ToolDeps = { source: resolveSource(live, snapshot) };
   const reg: Registry = {};
   registerReadTools(reg, d);
