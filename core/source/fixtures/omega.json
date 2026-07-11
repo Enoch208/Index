@@ -3,9 +3,9 @@
   "pack_price": 48,
   "model": "infinite",
   "tiers": [
-    { "label": "Grail",  "odds": 0.005, "card_count": 15,  "fmv_low": 1200, "fmv_high": 3500 },
-    { "label": "Chase",  "odds": 0.045, "card_count": 120, "fmv_low": 150,  "fmv_high": 450 },
-    { "label": "Rare",   "odds": 0.25,  "card_count": 400, "fmv_low": 35,   "fmv_high": 100 },
-    { "label": "Common", "odds": 0.70,  "card_count": 900, "fmv_low": 8,    "fmv_high": 25 }
+    { "label": "Grail",  "odds": 0.005, "card_count": 15,  "fmv_low": 800, "fmv_high": 2000 },
+    { "label": "Chase",  "odds": 0.045, "card_count": 120, "fmv_low": 100, "fmv_high": 320 },
+    { "label": "Rare",   "odds": 0.25,  "card_count": 400, "fmv_low": 25,  "fmv_high": 75 },
+    { "label": "Common", "odds": 0.70,  "card_count": 900, "fmv_low": 6,   "fmv_high": 20 }
   ]
 }
