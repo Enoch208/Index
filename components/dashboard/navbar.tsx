@@ -1,5 +1,3 @@
-import { WalletButton } from "./wallet-button";
-
 export function Navbar({ onMenuClick }: { onMenuClick: () => void }) {
   return (
     <header className="flex h-[60px] shrink-0 items-center justify-between gap-4 border-b border-[var(--sw-border)] px-4 sm:px-6">
@@ -15,12 +13,15 @@ export function Navbar({ onMenuClick }: { onMenuClick: () => void }) {
           </svg>
         </button>
         <p className="hidden text-[13px] text-[var(--sw-text-muted)] sm:block">
-          Streaming payroll on Sui
+          Read-only · public data · not financial advice
         </p>
       </div>
 
       <div className="flex items-center gap-2">
-        <WalletButton />
+        <span className="flex items-center gap-1.5 rounded-full border border-[var(--sw-border)] bg-[var(--sw-card-inset)] px-3 py-1.5 text-[12px] font-medium text-[var(--sw-text-muted)]">
+          <span aria-hidden className="size-1.5 rounded-full bg-[var(--sw-mint)]" />
+          Renaiss · BNB Chain
+        </span>
       </div>
     </header>
   );

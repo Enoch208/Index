@@ -1,108 +1,31 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { Icon, type IconName } from "./icons";
 import { cn } from "@/lib/utils";
 
-type SubNavItem = {
-  readonly label: string;
-  readonly href: string;
-};
-
 type NavItem = {
   readonly icon: IconName;
   readonly label: string;
   readonly href: string;
-  readonly badge?: string;
-  readonly matchPrefix?: string;
-  readonly subitems?: readonly SubNavItem[];
-  readonly submenuVariant?: "billing" | "developer";
 };
 
 const navItems: readonly NavItem[] = [
   { icon: "home", label: "Overview", href: "/dashboard" },
-  { icon: "sparkle", label: "Sweem AI", href: "/dashboard/ai" },
-  { icon: "payment", label: "Payroll", href: "/dashboard/payments" },
-  { icon: "customer", label: "Employees", href: "/dashboard/customers" },
-  { icon: "link", label: "Payment links", href: "/dashboard/payment-links" },
-  {
-    icon: "billing",
-    label: "Billing",
-    href: "/dashboard/billing/subscriptions",
-    matchPrefix: "/dashboard/billing",
-    submenuVariant: "billing",
-    subitems: [{ label: "Subscriptions", href: "/dashboard/billing/subscriptions" }],
-  },
-  { icon: "invoice", label: "Invoices", href: "/dashboard/invoices" },
-  { icon: "box", label: "Products", href: "/dashboard/products" },
-  { icon: "bank", label: "Offramp to Bank", href: "/dashboard/offramp", badge: "Coming soon" },
-  {
-    icon: "developer",
-    label: "Developer",
-    href: "/dashboard/developer/api-keys",
-    matchPrefix: "/dashboard/developer",
-    submenuVariant: "developer",
-    subitems: [
-      { label: "API keys", href: "/dashboard/developer/api-keys" },
-      { label: "Webhooks", href: "/dashboard/developer/webhooks" },
-      { label: "Documentation", href: "/dashboard/developer/documentation" },
-      { label: "API reference", href: "/dashboard/developer/api-reference" },
-      { label: "Components", href: "/dashboard/developer/component" },
-    ],
-  },
-  { icon: "settings", label: "Settings", href: "/dashboard/settings" },
+  { icon: "dollar", label: "Portfolio", href: "/dashboard/portfolio" },
+  { icon: "search", label: "Scanner", href: "/dashboard/scanner" },
+  { icon: "gift", label: "Rip-or-buy", href: "/dashboard/rip-or-buy" },
+  { icon: "shieldCheck", label: "Fairness", href: "/dashboard/verify" },
 ] satisfies readonly NavItem[];
 
 function getNavItemState(item: NavItem, pathname: string) {
-  const matchesSub = item.subitems?.some((s) => pathname === s.href) ?? false;
-  const isExpanded = matchesSub || (item.matchPrefix ? pathname.startsWith(item.matchPrefix) : false);
   const isActive =
     item.href === "/dashboard"
       ? pathname === item.href
-      : pathname === item.href || pathname.startsWith(`${item.href}/`) || isExpanded;
-  return { isExpanded, isActive };
-}
-
-function SubMenu({
-  items,
-  pathname,
-  onNavigate,
-}: {
-  items: readonly SubNavItem[];
-  pathname: string;
-  onNavigate: () => void;
-}) {
-  return (
-    <div className="ml-[26px] mt-1 flex flex-col border-l border-[var(--sw-border)] pl-3">
-      {items.map((item) => {
-        const active = pathname === item.href;
-        return (
-          <Link
-            key={item.label}
-            href={item.href}
-            onClick={onNavigate}
-            className={cn(
-              "flex items-center gap-2.5 rounded-md py-1.5 text-[12.5px] transition-colors",
-              active
-                ? "font-medium text-[var(--sw-mint)]"
-                : "text-[var(--sw-text-muted)] hover:text-[var(--sw-text)]"
-            )}
-          >
-            <span
-              className={cn(
-                "size-1.5 rounded-full",
-                active ? "bg-[var(--sw-mint)]" : "bg-[var(--sw-text-dim)]"
-              )}
-            />
-            <span>{item.label}</span>
-          </Link>
-        );
-      })}
-    </div>
-  );
+      : pathname === item.href || pathname.startsWith(`${item.href}/`);
+  return { isActive };
 }
 
 export function Sidebar({
@@ -129,32 +52,28 @@ export function Sidebar({
       {/* Brand */}
       <div
         className={cn(
-          "flex h-[60px] items-center gap-2.5",
+          "flex h-[60px] items-center gap-2",
           collapsed ? "justify-center px-0" : "px-5"
         )}
       >
-        <Image src="/sweem.png" alt="Sweem" width={26} height={26} priority className="h-[26px] w-[26px] shrink-0" />
+        <span aria-hidden className="size-[9px] shrink-0 rounded-[2px] bg-[var(--sw-mint)]" />
         {!collapsed && (
-          <>
-            <span className="text-[17px] font-semibold tracking-[-0.02em]">Sweem</span>
-            <span className="rounded-md bg-[var(--sw-card-inset)] px-1.5 py-0.5 text-[10px] font-medium text-[var(--sw-text-muted)]">
-              Beta
-            </span>
-          </>
+          <span className="text-[17px] font-semibold lowercase tracking-[-0.02em] text-[var(--sw-text)]">
+            index
+          </span>
         )}
       </div>
 
       {/* Nav */}
       <nav aria-label="Primary" className="flex-1 overflow-y-auto px-3 py-2">
         {navItems.map((item) => {
-          const { isExpanded, isActive } = getNavItemState(item, pathname);
+          const { isActive } = getNavItemState(item, pathname);
           return (
             <div key={item.label} className="mb-0.5">
               <Link
                 href={item.href}
                 title={item.label}
                 onClick={onClose}
-                aria-expanded={item.subitems ? isExpanded : undefined}
                 className={cn(
                   "group relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-[13.5px] font-medium transition-colors",
                   collapsed && "justify-center px-0",
@@ -179,20 +98,11 @@ export function Sidebar({
                   <Icon name={item.icon} size={18} />
                 </span>
                 {!collapsed && (
-                  <span className="relative z-10 flex flex-1 items-center justify-between gap-1.5">
+                  <span className="relative z-10 flex flex-1 items-center gap-1.5">
                     <span className="whitespace-nowrap">{item.label}</span>
-                    {item.badge && (
-                      <span className="shrink-0 whitespace-nowrap rounded bg-[rgba(196,245,107,0.16)] px-1 py-0.5 text-[8.5px] font-semibold text-[var(--sw-mint)]">
-                        {item.badge}
-                      </span>
-                    )}
                   </span>
                 )}
               </Link>
-
-              {!collapsed && item.subitems && isExpanded && (
-                <SubMenu items={item.subitems} pathname={pathname} onNavigate={onClose} />
-              )}
             </div>
           );
         })}

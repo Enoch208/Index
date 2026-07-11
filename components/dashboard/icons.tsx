@@ -15,6 +15,7 @@ export type IconName =
   | "settings"
   | "support"
   | "user"
+  | "shieldCheck"
   | "grid"
   | "globe"
   | "bell"
@@ -135,6 +136,12 @@ const paths: Record<IconName, React.ReactNode> = {
     <>
       <circle cx="12" cy="8.5" r="3" />
       <path d="M6.25 19c.5-3.05 2.45-4.6 5.75-4.6s5.25 1.55 5.75 4.6" />
+    </>
+  ),
+  shieldCheck: (
+    <>
+      <path d="M12 3.5 5 6v5.3c0 4.6 3 7.85 7 8.95 4-1.1 7-4.35 7-8.95V6l-7-2.5Z" />
+      <path d="m9 12.2 2 2 4-4.2" />
     </>
   ),
   grid: (
