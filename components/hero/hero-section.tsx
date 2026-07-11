@@ -28,27 +28,29 @@ export function HeroSection() {
 
       <div className="hero-copy relative z-10 mx-auto flex max-w-3xl flex-col items-center text-center">
         <h1 className="text-[62px] font-medium leading-[1.05] tracking-[-0.025em] md:text-[82px]">
-          Stream Payroll.
+          The agent layer
           <br />
-          Earn on Idle Cash.
+          for collectibles.
         </h1>
 
-        <p className="mt-5 max-w-[470px] text-[14px] leading-6 text-white/70 md:text-[15px]">
-          Pay your team by the second on Sui. Idle payroll auto-earns yield —
-          claimable anytime.
+        <p className="mt-5 max-w-[500px] text-[14px] leading-6 text-white/70 md:text-[15px]">
+          Paste a wallet to value it, catch mispriced cards, and verify pool
+          fairness on Renaiss — grounded in on-chain proofs. Probability and
+          pricing math, not financial advice.
         </p>
 
         <div className="mt-8 flex items-center gap-3">
           <LaunchAppButton className="rounded-full bg-[#c4f56b] px-6 py-3 text-[14px] font-semibold text-[#0a0c10]">
-            Launch Dashboard
+            Launch the Curator
           </LaunchAppButton>
         </div>
       </div>
 
       <div className="relative z-10 mx-auto mt-14 w-full max-w-5xl">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/sweem-dashboard.png"
-          alt="Sweem dashboard — live payroll streaming"
+          src="/index-dashboard.png"
+          alt="The Curator — collectibles portfolio, valued and verified"
           width={755}
           height={493}
           className="w-full rounded-[18px] [mask-image:linear-gradient(to_bottom,black_0%,black_34%,transparent_82%)]"
