@@ -3,6 +3,7 @@ import type { Envelope } from "../envelope";
 import { resolveSource, type RenaissSource } from "../source/index";
 import { SnapshotSource } from "../source/snapshot";
 import { registerReadTools } from "./read-tools";
+import { registerAnalysisTools } from "./analysis-tools";
 
 export interface Tool {
   description: string;
@@ -21,5 +22,6 @@ export function getRegistry(deps?: Partial<{ live: RenaissSource | null; snapsho
   const d: ToolDeps = { source: resolveSource(live, snapshot) };
   const reg: Registry = {};
   registerReadTools(reg, d);
+  registerAnalysisTools(reg, d);
   return reg;
 }

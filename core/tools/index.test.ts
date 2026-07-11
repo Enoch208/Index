@@ -24,3 +24,26 @@ test("get_listing validates input via zod", async () => {
   const e = await reg.get_listing.handler({ q: "eevee" });
   expect(Array.isArray(e.data)).toBe(true);
 });
+
+test("compute_pack_ev returns an EvResult envelope with assumptions", async () => {
+  const e = await reg.compute_pack_ev.handler({ pack_slug: "eden-pack", rips: 5 });
+  const d = e.data as any;
+  expect(d.pack_slug).toBe("eden-pack");
+  expect(d.cost).toBe(150);
+  expect(typeof d.ev_per_rip).toBe("number");
+  expect(d.assumptions.length).toBeGreaterThan(0);
+  expect(e.caveats).toContain("Probability and pricing math, not financial advice; FMV is an estimate.");
+});
+
+test("rip_or_buy compares direct ask against depletion-adjusted gacha EV", async () => {
+  const e = await reg.rip_or_buy.handler({ card_id: "charizard-base-psa9-014", pack_slug: "eden-pack", hit_prob: 0.01 });
+  const d = e.data as any;
+  expect(["buy", "rip", "toss-up"]).toContain(d.verdict);
+  expect(typeof d.gacha_net_expected_cost).toBe("number");
+  expect(d.workings).toContain("expected");
+});
+
+test("find_mispriced_listings ranks underpriced listings", async () => {
+  const e = await reg.find_mispriced_listings.handler({ threshold: 0.1 });
+  expect(Array.isArray(e.data)).toBe(true);
+});
