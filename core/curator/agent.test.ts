@@ -60,3 +60,38 @@ test("runCuratorTurn rejects invalid tool input without throwing or executing th
   expect(out.reply).toBe("I couldn't retrieve that.");
   expect(out.toolCalls).toHaveLength(0);
 });
+
+// Fake client: first turn asks for a tool with VALID shape input but a
+// pack_slug that doesn't exist in the snapshot fixtures, so the handler
+// (SnapshotSource.poolOdds) throws. The loop must catch this and turn it
+// into an error tool_result instead of letting it propagate out of
+// runCuratorTurn.
+function fakeClientHandlerThrows(): AnthropicLike {
+  let call = 0;
+  return {
+    messages: {
+      create: async () => {
+        call += 1;
+        if (call === 1) {
+          return {
+            stop_reason: "tool_use",
+            content: [
+              { type: "tool_use", id: "t1", name: "get_pool_odds", input: { pack_slug: "does-not-exist" } },
+            ],
+          };
+        }
+        return { stop_reason: "end_turn", content: [{ type: "text", text: "I couldn't find that pack." }] };
+      },
+    },
+  };
+}
+
+test("runCuratorTurn catches a handler/enforce error and continues the loop instead of throwing", async () => {
+  const out = await runCuratorTurn(
+    fakeClientHandlerThrows(),
+    getRegistry(),
+    [{ role: "user", content: "Value the does-not-exist pack" }],
+  );
+  expect(out.reply).toBe("I couldn't find that pack.");
+  expect(out.toolCalls).toHaveLength(0);
+});

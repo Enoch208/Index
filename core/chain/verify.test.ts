@@ -22,3 +22,9 @@ test("verifyMerkle returns match=null when leaves are unavailable", () => {
   expect(v.match).toBeNull();
   expect(v.not_proven.length).toBeGreaterThan(0);
 });
+
+test("verifyMerkle returns match=null (not a throw) when leaves is an empty array", () => {
+  const v = verifyMerkle({ packSlug: "eden-pack", leaves: [], onchainRoot: "0xabc" as `0x${string}` });
+  expect(v.match).toBeNull();
+  expect(v.not_proven.length).toBeGreaterThan(0);
+});

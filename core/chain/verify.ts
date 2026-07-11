@@ -16,7 +16,7 @@ export function verifyMerkle(args: {
 }): MerkleVerification {
   const { packSlug, leaves, onchainRoot } = args;
 
-  if (!leaves) {
+  if (!leaves || leaves.length === 0) {
     return {
       pack_slug: packSlug,
       onchain_root: onchainRoot ?? undefined,

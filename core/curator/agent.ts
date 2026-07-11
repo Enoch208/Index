@@ -52,9 +52,14 @@ export async function runCuratorTurn(
           });
           continue;
         }
-        const env = enforceOutputContract(await tool.handler(parsed.data));
-        toolCalls.push({ name: u.name, envelope: env });
-        results.push({ type: "tool_result", tool_use_id: u.id, content: JSON.stringify(env) });
+        try {
+          const env = enforceOutputContract(await tool.handler(parsed.data));
+          toolCalls.push({ name: u.name, envelope: env });
+          results.push({ type: "tool_result", tool_use_id: u.id, content: JSON.stringify(env) });
+        } catch (err) {
+          const message = err instanceof Error ? err.message : String(err);
+          results.push({ type: "tool_result", tool_use_id: u.id, content: `tool error: ${message}`, is_error: true });
+        }
       }
       convo.push({ role: "user", content: results });
       continue;
