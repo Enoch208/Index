@@ -47,3 +47,16 @@ test("find_mispriced_listings ranks underpriced listings", async () => {
   const e = await reg.find_mispriced_listings.handler({ threshold: 0.1 });
   expect(Array.isArray(e.data)).toBe(true);
 });
+
+test("verify_merkle_proof reports match when readers agree", async () => {
+  const { merkleRoot } = await import("../chain/merkle");
+  const leaves = ["0x01", "0x02"] as `0x${string}`[];
+  const root = merkleRoot(leaves);
+  const reg2 = getRegistry({
+    rootReader: { getRoot: async () => root },
+    leavesReader: { getLeaves: async () => leaves },
+  });
+  const e = await reg2.verify_merkle_proof.handler({ pack_slug: "eden-pack" });
+  expect((e.data as any).match).toBe(true);
+  expect((e.data as any).not_proven.length).toBeGreaterThan(0);
+});
