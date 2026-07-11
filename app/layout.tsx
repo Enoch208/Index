@@ -15,11 +15,11 @@ const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700", "800"],
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://sweem.org";
-const TITLE = "Sweem | Streaming Payroll on Sui";
-const TITLE_TEMPLATE = "%s | Sweem";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://index.app";
+const TITLE = "index — the agent layer for collectibles";
+const TITLE_TEMPLATE = "%s — index";
 const OG_DESC =
-  "Sweem streams salaries to your team per second on Sui and earns yield on idle payroll across Navi, Scallop, Suilend and more. Fund once, pay continuously, claim anytime.";
+  "index turns Renaiss listings, pack odds, and on-chain proofs into tools any AI agent can use — value a vault, catch mispriced cards, verify pool fairness, and run rip-or-buy EV. Probability and pricing math, not financial advice.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -28,26 +28,29 @@ export const metadata: Metadata = {
     template: TITLE_TEMPLATE,
   },
   description: OG_DESC,
-  applicationName: "Sweem",
-  authors: [{ name: "Sweem" }],
-  creator: "Sweem",
-  publisher: "Sweem",
-  category: "finance",
+  applicationName: "index",
+  authors: [{ name: "index" }],
+  creator: "index",
+  publisher: "index",
+  category: "technology",
   keywords: [
-    "Sweem",
-    "streaming payroll",
-    "Sui payroll",
-    "crypto payroll",
-    "onchain payroll",
-    "salary streaming",
-    "USDC payroll",
-    "web3 payroll",
-    "DeFi yield",
-    "Navi",
-    "Scallop",
-    "Suilend",
-    "real-time salary",
-    "Sui blockchain",
+    "index",
+    "collectibles agent",
+    "AI collectibles",
+    "Renaiss",
+    "graded cards",
+    "PSA",
+    "BGS",
+    "card valuation",
+    "MCP server",
+    "Model Context Protocol",
+    "pack odds",
+    "gacha EV",
+    "Merkle proof",
+    "on-chain verification",
+    "BNB Chain",
+    "agentic commerce",
+    "collector economy",
   ],
   alternates: {
     canonical: "/",
@@ -65,37 +68,37 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    siteName: "Sweem",
+    siteName: "index",
     url: SITE_URL,
     locale: "en_US",
     title: TITLE,
     description: OG_DESC,
-    images: [{ url: "/sweem-thumbnail.png", width: 1920, height: 1080, alt: "Sweem — streaming payroll on Sui" }],
+    images: [{ url: "/og_social.png", width: 1731, height: 909, alt: "index — the agent layer for collectibles" }],
   },
   twitter: {
     card: "summary_large_image",
     title: TITLE,
     description: OG_DESC,
-    images: ["/sweem-thumbnail.png"],
+    images: ["/og_social.png"],
   },
 };
 
-// Structured data so search engines render Sweem as a recognised software product.
+// Structured data so search engines render index as a recognised software product.
 const JSON_LD = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "Sweem",
-  applicationCategory: "FinanceApplication",
+  name: "index",
+  applicationCategory: "BusinessApplication",
   operatingSystem: "Web",
   url: SITE_URL,
   description: OG_DESC,
-  image: `${SITE_URL}/sweem-thumbnail.png`,
+  image: `${SITE_URL}/og_social.png`,
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   publisher: {
     "@type": "Organization",
-    name: "Sweem",
+    name: "index",
     url: SITE_URL,
-    logo: `${SITE_URL}/sweem.png`,
+    logo: `${SITE_URL}/index-logo.png`,
   },
 };
 
