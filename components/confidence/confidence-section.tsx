@@ -16,19 +16,19 @@ export function ConfidenceSection() {
   return (
     <Section className="bg-white">
       <SectionHeading
-        eyebrow="Seamless Control"
+        eyebrow="Grounded by default"
         eyebrowIcon={<LockIcon />}
         title={
           <>
-            Run Every Payroll
+            Every answer
             <br />
-            with Confidence
+            cites its source
           </>
         }
-        description="Deposit once, stream to your team, and route idle cash to yield — automated and onchain."
+        description="Source, timestamp, confidence, and a plain-language caveat on every number — enforced in the output contract, not left to the model. If it isn't in the data, the Curator says so instead of guessing."
         actions={
           <LaunchAppButton className="inline-flex h-10 items-center rounded-full bg-brand-dark px-6 text-[13px] font-medium text-white transition-colors hover:bg-brand-dark/90">
-            Launch Dashboard
+            Launch the Curator
           </LaunchAppButton>
         }
       />
@@ -37,8 +37,8 @@ export function ConfidenceSection() {
         <div className="w-full overflow-hidden rounded-[24px] border border-border bg-white">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/sweep-long.png"
-            alt="Sweem payroll dashboard"
+            src="/index-wide.png"
+            alt="The Curator — a grounded answer with source, timestamp, and an on-chain fairness check"
             className="h-auto w-full object-cover"
           />
         </div>
