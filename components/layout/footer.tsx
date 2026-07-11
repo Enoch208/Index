@@ -11,19 +11,19 @@ function XIcon() {
 const links = [
   {
     title: "Product",
-    items: ["Streaming Payroll", "Employee Vaults", "Yield Routing", "Multi-Token Pools", "Developer API"],
+    items: ["The Curator", "MCP Server", "Fairness Verifier", "Mispricing Scanner", "Rip-or-Buy EV"],
   },
   {
     title: "Features",
-    items: ["Real-Time Streams", "Idle-Cash Yield", "Live Runway", "Pause & Resume", "Delegated Roles"],
+    items: ["Portfolio Valuation", "On-chain Verification", "Grounded Answers", "Paper Trading", "Agent-to-Agent"],
   },
   {
     title: "Resources",
-    items: ["Getting Started", "Docs", "Protocol Overview", "Guides", "Community"],
+    items: ["Getting Started", "Docs", "MCP Install", "GitHub", "Renaiss"],
   },
 ];
 
-const socials = [{ label: "X", Icon: XIcon, href: "https://x.com/sweemfinance" }];
+const socials = [{ label: "X", Icon: XIcon, href: "https://x.com/tryindex" }];
 
 export function Footer() {
   return (
@@ -34,7 +34,7 @@ export function Footer() {
         {/* left */}
         <div>
           <h2 className="text-[33px] font-medium leading-[1.1] tracking-[-0.02em] text-[#101828] md:text-[42px]">
-            Let&apos;s Stream Your<br />Payroll.
+            Put an agent on<br />your collection.
           </h2>
           {/* email subscribe */}
           <SubscribeForm />
@@ -47,12 +47,12 @@ export function Footer() {
         {/* right: contact grid */}
         <div className="grid grid-cols-2 gap-x-8 gap-y-8 pt-2">
           <div>
-            <h4 className="text-[14px] font-semibold text-[#101828]">Location</h4>
-            <p className="mt-2 text-[14px] leading-[1.7] text-[#667085]">Built on Sui</p>
+            <h4 className="text-[14px] font-semibold text-[#101828]">Network</h4>
+            <p className="mt-2 text-[14px] leading-[1.7] text-[#667085]">Built on BNB Chain · Renaiss data</p>
           </div>
           <div>
             <h4 className="text-[14px] font-semibold text-[#101828]">Email</h4>
-            <a href="mailto:support.sweem@gmail.com" className="mt-2 block text-[14px] leading-[1.7] text-[#667085] hover:text-[#101828]">support.sweem@gmail.com</a>
+            <a href="mailto:hello@index.app" className="mt-2 block text-[14px] leading-[1.7] text-[#667085] hover:text-[#101828]">hello@index.app</a>
           </div>
         </div>
       </div>
@@ -94,7 +94,7 @@ export function Footer() {
 
       {/* bottom bar */}
       <div className="flex flex-col items-start gap-4 pt-7 text-[14px] text-text-secondary sm:flex-row sm:items-center sm:justify-between">
-        <span>© 2026 Sweem. All rights reserved.</span>
+        <span>© 2026 index. All rights reserved.</span>
         <div className="flex items-center gap-6">
           <a href="#" className="hover:text-text-primary">Terms of Service</a>
           <a href="#" className="hover:text-text-primary">Privacy Policy</a>
