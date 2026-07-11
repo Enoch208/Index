@@ -7,8 +7,8 @@ const LINE =
 const AREA = `${LINE} L300 120 L0 120 Z`;
 
 /**
- * "Idle cash at work" growth visual for the Impacts section — an upward balance
- * curve that draws in once on scroll. Replaces the empty placeholder box.
+ * "Market pulse" visual for the Impacts section — an upward activity curve that
+ * draws in once on scroll. Reads as the Curator tracking the live marketplace.
  */
 export function ImpactChart() {
   const reduce = useReducedMotion();
@@ -21,16 +21,16 @@ export function ImpactChart() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-60" />
             <span className="relative inline-flex size-2 rounded-full bg-brand" />
           </span>
-          Idle cash at work
+          Market pulse · live
         </span>
         <span className="rounded-full bg-[rgba(196,245,107,0.16)] px-2.5 py-1 text-[11px] font-medium text-[#c4f56b]">
-          Across 5 protocols
+          Renaiss
         </span>
       </div>
 
       <div className="mt-4 flex items-end gap-2">
-        <span className="text-[40px] font-semibold leading-none tracking-[-0.02em] text-text-primary">6.1%</span>
-        <span className="mb-1 text-[13px] text-text-muted">blended APY</span>
+        <span className="text-[40px] font-semibold leading-none tracking-[-0.02em] text-text-primary tabular-nums">1,284</span>
+        <span className="mb-1 text-[13px] text-text-muted">active listings</span>
       </div>
 
       <svg viewBox="0 0 300 120" className="mt-5 w-full" preserveAspectRatio="none" aria-hidden>
@@ -73,7 +73,7 @@ export function ImpactChart() {
       </svg>
 
       <p className="mt-4 text-[12px] leading-[1.6] text-text-secondary">
-        Unclaimed payroll compounds across Navi, Scallop, Suilend, Ondo &amp; AlphaFi — earning until the moment it&apos;s claimed.
+        The Curator tracks every Renaiss listing and re-prices it against fair-market value in real time — flagging what&apos;s underpriced.
       </p>
     </div>
   );
