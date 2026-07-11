@@ -1,126 +1,79 @@
+import { Wallet, Code2, ShieldCheck, Boxes, type LucideIcon } from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
 import { Section } from "@/components/layout/section";
 import { SectionHeading } from "@/components/layout/section-heading";
-import { TestimonialCard } from "@/components/testimonials/testimonial-card";
 
-function ClockIcon() {
+function UsersIcon() {
   return (
     <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 7v5l3 3" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="9" cy="8" r="3.2" />
+      <path d="M3.5 19a5.5 5.5 0 0 1 11 0" strokeLinecap="round" />
+      <path d="M16 5.5a3 3 0 0 1 0 5.6M17.5 19a5.5 5.5 0 0 0-2.4-4.5" strokeLinecap="round" />
     </svg>
   );
 }
 
-function WisdomAiLogo() {
-  return (
-    <div className="flex items-center gap-1.5 text-[13px] font-semibold text-text-primary">
-      WisdomAI
-    </div>
-  );
-}
+type Persona = { icon: LucideIcon; role: string; need: string; answer: string };
 
-function HandleLogo({ handle }: { handle: string }) {
-  return (
-    <div className="flex items-center gap-1.5 text-[13px] font-semibold text-text-primary">
-      <img
-        src={`https://unavatar.io/twitter/${handle}`}
-        alt={handle}
-        width={18}
-        height={18}
-        className="h-[18px] w-[18px] rounded-full object-cover"
-      />
-      {handle}
-    </div>
-  );
-}
-
-function EduhubLogo() {
-  return (
-    <div className="flex items-center gap-1.5 text-[13px] font-semibold text-text-primary">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#101828" strokeWidth="2" aria-hidden>
-        <path d="M3 8l9-4 9 4-9 4-9-4z" strokeLinejoin="round" />
-        <path d="M7 10.5V15c0 1.1 2.2 2 5 2s5-.9 5-2v-4.5" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M21 8v4" strokeLinecap="round" />
-      </svg>
-      Eduhub
-    </div>
-  );
-}
+const personas: Persona[] = [
+  {
+    icon: Wallet,
+    role: "Collector / Trader",
+    need: "“What's my vault worth? What's underpriced? Should I rip or buy?”",
+    answer: "Portfolio valuation, a mispricing scanner, and rip-or-buy EV — every number sourced.",
+  },
+  {
+    icon: Code2,
+    role: "Agent developer",
+    need: "“I need standard, programmatic access to collectibles data.”",
+    answer: "An open MCP server with 6+ typed tools — installs in Claude or any MCP client.",
+  },
+  {
+    icon: ShieldCheck,
+    role: "Skeptical newcomer",
+    need: "“Is this gacha actually fair?”",
+    answer: "One-click on-chain fairness check that states plainly what is — and isn't — proven.",
+  },
+  {
+    icon: Boxes,
+    role: "Renaiss ecosystem",
+    need: "“Show tooling that proves fairness and drives marketplace traffic.”",
+    answer: "Open infrastructure that links every finding back to renaiss.xyz.",
+  },
+];
 
 export function TestimonialsSection() {
   return (
     <Section className="bg-white">
       <SectionHeading
-        eyebrow="Testimonials"
-        eyebrowIcon={<ClockIcon />}
+        eyebrow="Who it's for"
+        eyebrowIcon={<UsersIcon />}
         title={
           <>
-            Trusted Worldwide by
+            Built for the
             <br />
-            30+ Growing Businesses
+            whole collector market
           </>
         }
-        description="Real stories from teams streaming payroll onchain with Sweem."
+        description="From collectors to agent developers to the skeptics — every answer is grounded, sourced, and safe by default."
       />
 
-      {/* row 1 */}
-      <div className="grid items-stretch gap-4 md:grid-cols-3">
-        <Reveal>
-          <TestimonialCard type="image" image="/ceo.png" bg="linear-gradient(160deg,#c8dff0,#e8f4fc)" />
-        </Reveal>
-        <Reveal delay={0.06}>
-          <TestimonialCard
-            type="quote"
-            logo={<WisdomAiLogo />}
-            quote='"Monthly payroll runs are gone. Our team gets paid by the second and can claim whenever they need it."'
-            name="Prantik Bala"
-            role="Wisdom Ai"
-            avatar="/prantik.jpeg"
-          />
-        </Reveal>
-        <Reveal delay={0.1}>
-          <TestimonialCard
-            type="quote"
-            logo={<HandleLogo handle="KimiaProtocol" />}
-            quote='"Idle payroll used to just sit there. Now it earns yield until the moment an employee claims."'
-            name="KimiaProtocol"
-            role="@KimiaProtocol"
-            avatar="https://unavatar.io/twitter/KimiaProtocol"
-            href="https://x.com/KimiaProtocol"
-            light
-          />
-        </Reveal>
-      </div>
-
-      {/* row 2 */}
-      <div className="mt-4 grid items-stretch gap-4 md:grid-cols-3">
-        <Reveal>
-          <TestimonialCard
-            type="quote"
-            logo={<HandleLogo handle="DikeProtocol" />}
-            quote='"We can see our exact runway in real time. Pausing or adjusting a single stream takes one click."'
-            name="DikeProtocol"
-            role="@DikeProtocol"
-            avatar="https://unavatar.io/twitter/DikeProtocol"
-            href="https://x.com/DikeProtocol"
-            light
-          />
-        </Reveal>
-        <Reveal delay={0.06}>
-          <TestimonialCard
-            type="quote"
-            logo={<EduhubLogo />}
-            quote='"Non-custodial, onchain, and instant. Sweem gave us confidence to run global payroll."'
-            name="Sahitya Roy"
-            role="@SahityaRoy07"
-            avatar="https://unavatar.io/twitter/SahityaRoy07"
-            href="https://x.com/SahityaRoy07"
-          />
-        </Reveal>
-        <Reveal delay={0.1}>
-          <TestimonialCard type="image" image="/cto.png" bg="linear-gradient(160deg,#1a3a2a,#2d5c42)" />
-        </Reveal>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {personas.map((p, i) => (
+          <Reveal key={p.role} delay={i * 0.06}>
+            <div className="flex h-full flex-col rounded-[20px] border border-[#eef0f3] bg-white p-6">
+              <span className="grid size-10 place-items-center rounded-xl bg-[rgba(196,245,107,0.18)] text-[#3f7a17]">
+                <p.icon className="size-5" strokeWidth={1.9} />
+              </span>
+              <p className="mt-4 text-[13px] font-semibold text-brand">{p.role}</p>
+              <p className="mt-2 text-[14px] leading-[1.55] text-[#1a2535]">{p.need}</p>
+              <div className="mt-5 border-t border-[#f0f2f5] pt-4">
+                <p className="text-[11px] font-medium uppercase tracking-wider text-text-muted">The Curator</p>
+                <p className="mt-1.5 text-[12.5px] leading-[1.55] text-text-secondary">{p.answer}</p>
+              </div>
+            </div>
+          </Reveal>
+        ))}
       </div>
     </Section>
   );
