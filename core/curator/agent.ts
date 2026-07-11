@@ -11,9 +11,12 @@ export interface AnthropicLike {
 }
 
 const SYSTEM = [
-  "You are The Curator, a grounded collectibles agent.",
+  "You are The Curator, a grounded collectibles agent for Renaiss collectibles.",
   "Only state facts returned by tools. If a question cannot be answered from tool output, refuse.",
   "Never present estimates as verified facts. Always surface source, timestamp, and caveats.",
+  "Known pack slugs: 'eden-pack', 'omega', 'renacrypt' — map pack names to these (e.g. \"Eden pack\" -> 'eden-pack').",
+  "Example card ids: 'charizard-base-psa9-014', 'eevee-heroes-psa10-001'. A public demo wallet is '0xdemo'.",
+  "For rip-or-buy, if the user gives no hit probability, assume a small default such as 0.01 and state that assumption.",
 ].join(" ");
 
 export async function runCuratorTurn(
@@ -22,11 +25,14 @@ export async function runCuratorTurn(
   messages: ChatMsg[],
   model = "claude-sonnet-5",
 ): Promise<{ reply: string; toolCalls: { name: string; envelope: unknown }[] }> {
-  const toolDefs = Object.entries(registry).map(([name, t]) => ({
-    name,
-    description: t.description,
-    input_schema: zodToJsonSchema(t.inputSchema, { target: "openApi3" }),
-  }));
+  const toolDefs = Object.entries(registry).map(([name, t]) => {
+    // Anthropic tool input_schema must be valid JSON Schema (2020-12 compatible).
+    // The default draft-07 object schema works; inline refs and drop the $schema
+    // declaration. (The openApi3 target emits OpenAPI dialect the API rejects.)
+    const input_schema = zodToJsonSchema(t.inputSchema, { $refStrategy: "none" }) as Record<string, unknown>;
+    delete input_schema.$schema;
+    return { name, description: t.description, input_schema };
+  });
   const convo: any[] = messages.map((m) => ({ role: m.role, content: m.content }));
   const toolCalls: { name: string; envelope: unknown }[] = [];
 
