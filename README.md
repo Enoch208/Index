@@ -14,7 +14,7 @@
 
 Most collectibles tools answer one question: _what is it worth?_ **index** answers the one an agent actually needs before it acts — _what is it worth, **where did that number come from**, and what does it still **not** prove?_ It turns [Renaiss](https://www.renaiss.xyz) listings, pack odds, and on‑chain commitments into **9 typed tools** behind an open MCP server and a grounded collector agent — **the Curator** — where every answer arrives wrapped in its own provenance: source, timestamp, and the caveats that keep an estimate from masquerading as a fact.
 
-**[ Watch the demo ↗ ](#-demo)** &nbsp;·&nbsp; **[ Live demo ↗ ](https://useindex.vercel.app)** &nbsp;·&nbsp; **[ MCP quickstart ↗ ](#use-it-from-any-mcp-client)** &nbsp;·&nbsp; **[ The math ↗ ](#the-math--published-and-tested)** &nbsp;·&nbsp; **[ Run it locally ↗ ](#run-it-locally)**
+**[ Watch the demo ↗ ](#-demo)** &nbsp;·&nbsp; **[ X thread 🧵 ](https://x.com/dreyethh/status/2075964212531065308)** &nbsp;·&nbsp; **[ Live demo ↗ ](https://useindex.vercel.app)** &nbsp;·&nbsp; **[ MCP quickstart ↗ ](#use-it-from-any-mcp-client)** &nbsp;·&nbsp; **[ The math ↗ ](#the-math--published-and-tested)** &nbsp;·&nbsp; **[ Run it locally ↗ ](#run-it-locally)**
 
 Built for the **Renaiss Hackathon**. _Probability and pricing math, not financial advice; FMV is an estimate._
 
