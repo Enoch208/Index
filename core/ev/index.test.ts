@@ -37,3 +37,20 @@ test("limited pools with remaining counts use depletion-adjusted probabilities",
   expect(probs[0]).toBeCloseTo(0.1, 6); // 1/(1+9)
   expect(packEv(limited).ev_per_rip).toBeCloseTo(0.1 * 500 + 0.9 * 50, 6); // 95
 });
+
+test("variance combines between-tier spread and the within-tier uniform term", () => {
+  // Two equally-likely tiers: A mid=0 (0..0), B mid=6 (0..12); EV = 3.
+  // between-tier: 0.5*(0-3)^2 + 0.5*(6-3)^2 = 9
+  // within-tier:  0.5*0 + 0.5*(12-0)^2/12 = 6
+  // variance = 15  ->  std_dev = sqrt(15)
+  const pool: PoolOdds = {
+    pack_slug: "spread", pack_price: 10, model: "infinite",
+    tiers: [
+      { label: "A", odds: 0.5, card_count: 1, fmv_low: 0, fmv_high: 0 },
+      { label: "B", odds: 0.5, card_count: 1, fmv_low: 0, fmv_high: 12 },
+    ],
+  };
+  const r = packEv(pool);
+  expect(r.ev_per_rip).toBeCloseTo(3, 6);
+  expect(r.std_dev).toBeCloseTo(Math.sqrt(15), 6);
+});
