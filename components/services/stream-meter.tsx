@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const RATE = 0.0188; // USD per ms (visual only)
+const RATE = 0.0011; // USD per ms — gentle live drift (visual only)
 
 // Dashboard "Total Streamed" equalizer — lime first half, violet second half.
 const EQ = Array.from({ length: 32 }, (_, i) =>
@@ -12,10 +12,11 @@ const MINT = "linear-gradient(to top, #a6e34a, #c4f56b)";
 const LAVENDER = "linear-gradient(to top, #a593f2, #bcaef7)";
 
 /**
- * Live "salary streaming" visual for the Core Service feature tile: a counter
- * that accrues every animation frame above an equalizer of pulsing bars.
- * Both halves stop under prefers-reduced-motion (frame loop guarded here,
- * bars via the .stream-bar media query in globals.css).
+ * Live "portfolio value" visual for the Curator's valuation tile: an estimated
+ * vault value that drifts every animation frame above an equalizer of pulsing
+ * bars (reads as live market activity). Both halves stop under
+ * prefers-reduced-motion (frame loop guarded here, bars via the .stream-bar
+ * media query in globals.css).
  */
 export function StreamMeter() {
   const [total, setTotal] = useState(128540.42);
@@ -46,9 +47,9 @@ export function StreamMeter() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-60" />
             <span className="relative inline-flex size-2 rounded-full bg-brand" />
           </span>
-          Streaming now
+          Estimated vault value
         </span>
-        <span className="text-[11px] font-medium text-text-muted">+${(RATE * 1000).toFixed(2)}/s</span>
+        <span className="text-[11px] font-medium text-text-muted">Renaiss FMV · conf. ±6%</span>
       </div>
 
       <div className="mt-3 font-semibold tracking-tight text-text-primary tabular-nums">
