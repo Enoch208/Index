@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/motion/reveal";
 import { Section } from "@/components/layout/section";
+import { ImpactChart } from "@/components/stats/impact-chart";
 
 function CheckIcon() {
   return (
@@ -9,34 +10,19 @@ function CheckIcon() {
   );
 }
 
-const stats: { value: string; label: string; logos?: string[] }[] = [
-  { value: "100%", label: "Onchain Settlement" },
-  { value: "24/7", label: "Claimable Salary" },
-  {
-    value: "5+",
-    label: "Integrated Yield Protocols",
-    logos: [
-      "/protocols/lending/navi.webp",
-      "/protocols/lending/scallop.png",
-      "https://unavatar.io/suilend.fi",
-      "https://unavatar.io/ondo.finance",
-      "https://unavatar.io/alphafi.xyz",
-    ],
-  },
+const stats: { value: string; label: string }[] = [
+  { value: "6+", label: "MCP tools, installable" },
+  { value: "100%", label: "On-chain verifiable" },
+  { value: "0", label: "Private keys held" },
 ];
 
 export function StatsSection() {
   return (
     <Section className="overflow-hidden bg-white">
       <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
-        {/* left — live growth visual */}
+        {/* left — live market pulse visual */}
         <Reveal className="w-full lg:w-[380px] lg:shrink-0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/sweem-banner1.png"
-            alt="Idle cash earning yield across Sui lending protocols"
-            className="w-full rounded-[20px] object-contain"
-          />
+          <ImpactChart />
         </Reveal>
 
         {/* right */}
@@ -46,36 +32,21 @@ export function StatsSection() {
             Impacts
           </p>
           <h2 className="mt-3 text-[clamp(28px,4vw,42px)] font-medium leading-[1.12] tracking-[-0.02em]">
-            <span className="text-text-primary">Pay your team in real time with full onchain </span>
-            <span className="text-text-muted">visibility into every salary stream.</span>
+            <span className="text-text-primary">One agent for the whole collector market, </span>
+            <span className="text-text-muted">grounded only in verified data.</span>
           </h2>
           <p className="mt-5 max-w-[520px] text-[13px] leading-6 text-text-secondary">
-            Move beyond monthly batch runs. Sweem settles payroll on Sui so every salary is
-            streamed, claimable, and earning yield while it sits idle.
+            An open MCP server any agent can install, a grounded collector agent for humans, and a fairness
+            verifier that proves what&apos;s on-chain — read-only, public data only, no keys.
           </p>
           <dl className="mt-8 grid grid-cols-3 gap-4 border-t border-border pt-8">
-            {stats.map(({ value, label, logos }) => (
+            {stats.map(({ value, label }) => (
               <div key={value} className="group">
                 <span className="block h-[3px] w-7 rounded-full bg-brand/25 transition-[width,background-color] duration-300 group-hover:w-12 group-hover:bg-brand" />
                 <dd className="mt-3 flex items-center gap-3">
                   <span className="text-[clamp(28px,4vw,42px)] font-semibold leading-none tracking-[-0.02em] text-text-primary tabular-nums">
                     {value}
                   </span>
-                  {logos && (
-                    <span className="flex -space-x-2.5">
-                      {logos.map((src) => (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          key={src}
-                          src={src}
-                          alt=""
-                          className={`size-8 rounded-full object-cover ring-2 ring-[#15161b] ${
-                            src.includes("ondo") ? "[filter:brightness(0)_invert(1)]" : "bg-white"
-                          }`}
-                        />
-                      ))}
-                    </span>
-                  )}
                 </dd>
                 <dt className="mt-1.5 text-[14px] text-text-secondary">{label}</dt>
               </div>
