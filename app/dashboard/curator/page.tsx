@@ -85,7 +85,7 @@ export default function CuratorPage() {
                   key={s}
                   type="button"
                   onClick={() => send(s)}
-                  className="rounded-full border border-[var(--sw-border)] bg-[var(--sw-card-inset)] px-3 py-1.5 text-[12.5px] text-[var(--sw-text-muted)] transition-colors hover:text-[var(--sw-text)]"
+                  className="cursor-pointer rounded-full border border-[var(--sw-border)] bg-[var(--sw-card-inset)] px-3 py-1.5 text-[12.5px] text-[var(--sw-text-muted)] transition-colors hover:border-[var(--sw-border-strong)] hover:text-[var(--sw-text)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--sw-mint)]/40"
                 >
                   {s}
                 </button>
@@ -108,7 +108,7 @@ export default function CuratorPage() {
 
               {m.toolCalls && m.toolCalls.length > 0 && (
                 <details className="mt-3 border-t border-[var(--sw-border)] pt-2.5">
-                  <summary className="cursor-pointer text-[11.5px] font-medium text-[var(--sw-text-muted)]">
+                  <summary className="cursor-pointer text-[11.5px] font-medium text-[var(--sw-text-muted)] transition-colors hover:text-[var(--sw-text)]">
                     Grounded in {m.toolCalls.length} tool call{m.toolCalls.length > 1 ? "s" : ""}
                   </summary>
                   <div className="mt-2 space-y-2.5">

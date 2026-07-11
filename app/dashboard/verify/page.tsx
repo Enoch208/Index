@@ -7,6 +7,7 @@ import {
   PageHeader,
   Panel,
   Field,
+  Select,
   PrimaryButton,
   Skeleton,
   EmptyState,
@@ -148,14 +149,7 @@ export default function VerifyPage() {
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
           <div className="w-full sm:w-64">
             <Field label="Pack">
-              <select
-                value={pack}
-                onChange={(e) => setPack(e.target.value)}
-                className={cn(
-                  "h-9 rounded-lg border border-[var(--sw-border)] bg-[var(--sw-bg)] px-3 text-[13px] text-[var(--sw-text)]",
-                  "outline-none transition-colors focus:border-[var(--sw-mint)]"
-                )}
-              >
+              <Select value={pack} onChange={(e) => setPack(e.target.value)}>
                 <option value="" disabled>
                   Select a pack…
                 </option>
@@ -164,7 +158,7 @@ export default function VerifyPage() {
                     {slug}
                   </option>
                 ))}
-              </select>
+              </Select>
             </Field>
           </div>
 

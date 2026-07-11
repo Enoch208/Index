@@ -120,7 +120,7 @@ export default function DashboardPage() {
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {entryCards.map((card) => (
-          <Link key={card.href} href={card.href}>
+          <Link key={card.href} href={card.href} className="cursor-pointer focus-visible:outline-none">
             <Panel className="flex h-full flex-col gap-1 p-4 transition-colors hover:border-[var(--sw-mint)]">
               <p className="text-[14px] font-semibold text-[var(--sw-text)]">{card.title}</p>
               <p className="text-[12.5px] text-[var(--sw-text-muted)]">{card.description}</p>

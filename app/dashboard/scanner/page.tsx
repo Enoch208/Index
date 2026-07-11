@@ -76,13 +76,13 @@ function DeviationBadge({ deviation }: { deviation: number }) {
 function MispricingRow({ item }: { item: Mispricing }) {
   const { listing, fmv_deviation, reason } = item;
   return (
-    <div className="flex flex-col gap-2 border-b border-[var(--sw-border)] px-4 py-3 last:border-b-0 sm:flex-row sm:items-center sm:justify-between">
+    <div className="flex flex-col gap-2 border-b border-[var(--sw-border)] px-4 py-3 transition-colors last:border-b-0 hover:bg-[var(--sw-bg)] sm:flex-row sm:items-center sm:justify-between">
       <div className="flex flex-col gap-0.5">
         <a
           href={listing.url}
           target="_blank"
           rel="noreferrer"
-          className="text-[13.5px] font-medium text-[var(--sw-text)] hover:text-[var(--sw-mint)]"
+          className="text-[13.5px] font-medium text-[var(--sw-text)] transition-colors hover:text-[var(--sw-mint)] hover:underline"
         >
           {listing.name}
         </a>

@@ -120,7 +120,7 @@ export function Sidebar({
           type="button"
           onClick={onToggle}
           aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
-          className="flex size-9 items-center justify-center rounded-lg border border-[var(--sw-border)] text-[var(--sw-text-muted)] transition-colors hover:bg-[var(--sw-card-inset)] hover:text-[var(--sw-text)]"
+          className="flex size-9 cursor-pointer items-center justify-center rounded-lg border border-[var(--sw-border)] text-[var(--sw-text-muted)] transition-colors hover:border-[var(--sw-border-strong)] hover:bg-[var(--sw-card-inset)] hover:text-[var(--sw-text)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--sw-mint)]/40"
         >
           <svg
             className={cn("transition-transform", collapsed && "rotate-180")}

@@ -1,4 +1,4 @@
-import type { InputHTMLAttributes, ReactNode } from "react";
+import type { InputHTMLAttributes, ReactNode, SelectHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 export function PageHeader({
@@ -50,17 +50,44 @@ export function Field({
   );
 }
 
-export function TextInput({ className, ...props }: InputHTMLAttributes<HTMLInputElement>) {
+export function TextInput({ className, disabled, ...props }: InputHTMLAttributes<HTMLInputElement>) {
   return (
     <input
+      disabled={disabled}
       className={cn(
         "h-9 rounded-lg border border-[var(--sw-border)] bg-[var(--sw-bg)] px-3 text-[13px] text-[var(--sw-text)]",
         "placeholder:text-[var(--sw-text-dim)] outline-none transition-colors",
-        "focus:border-[var(--sw-mint)]",
+        "hover:border-[var(--sw-border-strong)]",
+        "focus:border-[var(--sw-mint)]/60 focus:outline-none",
+        "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-[var(--sw-border)]",
         className
       )}
       {...props}
     />
+  );
+}
+
+export function Select({
+  className,
+  disabled,
+  children,
+  ...props
+}: SelectHTMLAttributes<HTMLSelectElement>) {
+  return (
+    <select
+      disabled={disabled}
+      className={cn(
+        "h-9 cursor-pointer rounded-lg border border-[var(--sw-border)] bg-[var(--sw-bg)] px-3 text-[13px] text-[var(--sw-text)]",
+        "outline-none transition-colors",
+        "hover:border-[var(--sw-border-strong)]",
+        "focus:border-[var(--sw-mint)]/60 focus:outline-none",
+        "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-[var(--sw-border)]",
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </select>
   );
 }
 
@@ -73,7 +100,10 @@ export function PrimaryButton({
     <button
       type="button"
       className={cn(
-        "inline-flex h-9 items-center justify-center gap-1.5 rounded-lg bg-[var(--sw-mint)] px-3.5 text-[13px] font-semibold text-black transition-opacity hover:opacity-90 disabled:opacity-50",
+        "inline-flex h-9 cursor-pointer items-center justify-center gap-1.5 rounded-lg bg-[var(--sw-mint)] px-3.5 text-[13px] font-semibold text-black",
+        "transition-all duration-150 hover:brightness-110 active:scale-[0.97] active:brightness-95",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--sw-mint)]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--sw-bg)]",
+        "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:brightness-100 disabled:active:scale-100",
         className
       )}
       {...props}

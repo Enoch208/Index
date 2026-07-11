@@ -8,6 +8,7 @@ import {
   Panel,
   Field,
   TextInput,
+  Select,
   PrimaryButton,
   Skeleton,
   EmptyState,
@@ -51,33 +52,6 @@ const VERDICT_LABELS: Record<RipOrBuyResult["verdict"], string> = {
   buy: "Buy — direct wins",
   "toss-up": "Toss-up",
 };
-
-function Select({
-  value,
-  onChange,
-  options,
-}: {
-  value: string;
-  onChange: (value: string) => void;
-  options: readonly string[];
-}) {
-  return (
-    <select
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      className={cn(
-        "h-9 rounded-lg border border-[var(--sw-border)] bg-[var(--sw-bg)] px-3 text-[13px] text-[var(--sw-text)]",
-        "outline-none transition-colors focus:border-[var(--sw-mint)]"
-      )}
-    >
-      {options.map((opt) => (
-        <option key={opt} value={opt}>
-          {opt}
-        </option>
-      ))}
-    </select>
-  );
-}
 
 export default function RipOrBuyPage() {
   const [cardId, setCardId] = useState<string>(CARD_OPTIONS[0]);
@@ -131,10 +105,22 @@ export default function RipOrBuyPage() {
       <Panel className="flex flex-col gap-4 p-5">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
           <Field label="Target card">
-            <Select value={cardId} onChange={setCardId} options={CARD_OPTIONS} />
+            <Select value={cardId} onChange={(e) => setCardId(e.target.value)}>
+              {CARD_OPTIONS.map((opt) => (
+                <option key={opt} value={opt}>
+                  {opt}
+                </option>
+              ))}
+            </Select>
           </Field>
           <Field label="Pack">
-            <Select value={packSlug} onChange={setPackSlug} options={PACK_OPTIONS} />
+            <Select value={packSlug} onChange={(e) => setPackSlug(e.target.value)}>
+              {PACK_OPTIONS.map((opt) => (
+                <option key={opt} value={opt}>
+                  {opt}
+                </option>
+              ))}
+            </Select>
           </Field>
           <Field label="Hit probability">
             <TextInput
@@ -254,7 +240,10 @@ export default function RipOrBuyPage() {
                   </thead>
                   <tbody>
                     {ev.tier_hit_probs.map((tier) => (
-                      <tr key={tier.label} className="border-b border-[var(--sw-border)] last:border-b-0">
+                      <tr
+                        key={tier.label}
+                        className="border-b border-[var(--sw-border)] transition-colors last:border-b-0 hover:bg-[var(--sw-bg)]"
+                      >
                         <td className="px-3 py-2 text-[var(--sw-text)]">{tier.label}</td>
                         <td className="px-3 py-2 tabular-nums text-[var(--sw-text)]">
                           {(tier.p_at_least_one * 100).toFixed(1)}%
